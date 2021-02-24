@@ -1,0 +1,74 @@
+{
+  "tests": [
+    {
+      "name": "compile",
+      "setup": "make clean",
+      "run": "make all",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 25
+    },
+    {
+      "name": "execute on input_lab.dat",
+      "setup": "make clean && make all",
+      "run": "./all input_lab.dat output.dat && cat output.dat",
+      "input": "",
+      "output": "21 6 5",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 25
+    },
+    {
+      "name": "no-warnings",
+      "setup": "make clean",
+      "run": "make test-warnings",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 10
+    },
+    {
+      "name": "memory leaks no files",
+      "setup": "make clean",
+      "run": "make test-leaks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 4
+    },
+    {
+      "name": "cpp check",
+      "setup": "make clean",
+      "run": "make test-cpp-checks",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 5
+    },
+    {
+      "name": "execute on input.dat",
+      "setup": "make clean && make all",
+      "run": "./all input.dat output.dat && cat output.dat",
+      "input": "",
+      "output": "2 5 200\r\n1 2\r\n2 5 200\r\n9 42 24\r\n42 24",
+      "comparison": "exact",
+      "timeout": 1,
+      "points": 25
+    },
+    {
+      "name": "memory leaks with files",
+      "setup": "make clean && make all",
+      "run": "valgrind --leak-check=full --error-exitcode=1 ./all input.dat output.dat",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 5
+    }
+  ]
+}
